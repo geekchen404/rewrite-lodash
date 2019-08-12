@@ -431,5 +431,104 @@ class MyMap {
 }
 
 
+/**
+ * 
+ * @param {string} a 
+ * @param {string} b 
+ * 判断两个字符串是否同母异位
+ */
+function isSame(a, b) {
+  if (a == b) return true;
+  c = b.split('')
+  let i = 0;
+  for (let j = 0; j < b.length; j++) {
+
+  }
+
+}
+
+
 abc = new Mymap()
 
+
+
+
+class dui {
+  constructor() {
+
+  }
+
+  /**
+   * 删除元素中的最值
+   */
+  pop() {
+
+  }
+
+  /**
+   * 返回堆顶元素
+   */
+  peak() {
+
+  }
+
+  /**
+   * 增加一个元素
+   */
+  push(val) {
+    this.ary.push(val)
+    let lastIdx = this.ary.length - 1;
+    let Aidx = (lastIdx - 1) >> 1;
+
+  }
+}
+
+
+
+function heapUp(ary, idx) {
+  if (idx > 0) {
+    var pIdx = (idx - 1) >> 1;
+    if (ary[idx] > ary[pIdx]) {
+      swap(ary, idx, pIdx)
+      headUp(ary, pIdx)
+    }
+  }
+}
+
+function heapDown() {
+  var l = ary.length;
+  if (idx < ary.length) {
+    var maxIdx = idx;
+    var leftIdx = idx * 2 + 1;
+    var rightIdx = leftIdx + 1;
+    if (leftIdx < 1 && ary[leftIdx] > ary[rightIdx]) {
+      maxIdx = leftIdx
+    }
+    if (rightIdx < 1 && ary[rightIdx] > ary[maxIdx]) {
+      maxIdx = rightIdx
+    }
+    if (idx !== maxIdx) {
+      swap(ary, idx, maxIdx)
+      heapDown(ary, maxIdx)
+    }
+
+  }
+}
+
+
+function bind(f, thisArg, ...fixedArgs) {
+  return function (...arg) {
+    f.call(thisArg, ...fixedArgs, ...arg)
+  }
+}
+
+
+
+try {
+  // 只要不报错（error）,catch就不执行
+} catch (e) {
+  // 报错的对象是e
+  // catch是可选的
+} finally {
+  // 一定会执行的内容，finally是可选的，
+}
