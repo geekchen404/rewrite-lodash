@@ -532,3 +532,39 @@ try {
 } finally {
   // 一定会执行的内容，finally是可选的，
 }
+
+
+
+class Person {
+  constructor(str) {
+    this.data = []
+    this.str = ''
+    if (str) {
+      this.add(str)
+    }
+  }
+  add(str) {
+    this.data = str.split(' ')
+    this.str = str;
+  }
+  get firstName() {
+    return this.data[0]
+  }
+  get lastName() {
+    return this.data[1]
+  }
+  get fullName() {
+    return this.str;
+  }
+  set firstName(s) {
+    this.data[0] = s;
+    this.str = this.data.join('')
+  }
+  set lastName(s) {
+    this.data[1] = s;
+    this.str = this.data.join('')
+  }
+  set fullName(s) {
+    this.add(s)
+  }
+}

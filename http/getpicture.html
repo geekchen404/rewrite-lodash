@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script>
+    let pics = null
+    let isAdd = false
+    let size = 0;
+    let maxLoad = 1;
+    // 得到所有的照片数据
+    function getContention() {
+      let conn = new XMLHttpRequest()
+      conn.open('get', 'https://xieranmaya.github.io/images/cats/cats.json')
+      conn.addEventListener('load', () => {
+        pics = JSON.parse(conn.responseText);
+        addPicture(appendPiicture)
+      })
+      conn.send()
+    }
+
+
+    // 异步添加图片
+    function addPicture(callback) {
+      callback()
+    }
+
+    function appendPiicture() {
+      let picNode = document.createElement('img')
+      picNode.src = 'http://xieranmaya.github.io/images/cats/' + pics[size].url;
+      picNode.style.width = Number(pics[size].width)
+      picNode.style.height = Number(pics[size].height)
+      picNode.style.backgroundColor = 'pink'
+      let body = document.querySelector('body')
+      body.appendChild(picNode)
+      size++;
+      // 一个加载完成，再接着递归
+      picNode.onload = () => {
+        addPicture(appendPiicture)
+      }
+    }
+  </script>
+</head>
+
+<body>
+  <button onclick="getContention()">开始</button>
+</body>
+
+</html>

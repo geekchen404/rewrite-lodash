@@ -16,9 +16,15 @@ function intersection(...array) {
 }
 
 function hasSameData(cur, ary) {
-  let res = []
+  let res = [] 
   let data = {}
   for (let val of cur) data[val] = val
   for (let a of ary) if (data[a] && !res.includes(a)) res.push(a)
   return res;
+}
+
+
+
+function intersectionBy() {
+
 }

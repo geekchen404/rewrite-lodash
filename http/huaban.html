@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>瀑布流</title>
+</head>
+
+<style>
+  body {
+    position: relative;
+  }
+
+  .first-line,
+  .second-line,
+  .third-line {
+    width: 400px;
+    margin: 0 10px;
+    display: inline-block;
+  }
+
+  .first-line,
+  .second-line,
+  .third-line img {
+    top: 0;
+  }
+</style>
+
+<body>
+  <!-- 布局应该是定宽，三列 -->
+  <!-- 先实现显示一定宽高的div盒子 -->
+  <div class="first-line">
+  </div>
+  <div class="second-line">
+  </div>
+  <div class="third-line">
+  </div>
+</body>
+<script>
+  let url = 'https://xieranmaya.github.io/images/cats/cats.json'
+  let origin = 'http://xieranmaya.github.io/images/cats/'
+  let firstul = document.querySelector('.first-line')
+  let secondul = document.querySelector('.second-line')
+  let thirdul = document.querySelector('.third-line')
+  let picMsg = null
+  let newpic = null
+  window.onload = () => {
+    getAllImgMsg()
+  }
+  function getAllImgMsg() {
+    let conn = new XMLHttpRequest()
+    conn.open('get', url)
+    conn.onload = () => {
+      picMsg = JSON.parse(conn.responseText)
+      countPosition()
+    }
+    conn.send()
+  }
+
+  function countPosition() {
+    newpic = picMsg.reduce((cur, it, idx) => {
+      let curHeight = Number(it.height * 400 / it.width)
+      cur.push(curHeight)
+      addNode(it.url, idx)
+      return cur
+    }, [])
+  }
+
+
+
+  function addNode(cururl, idx) {
+    let picNode = document.createElement('img')
+    picNode.src = 'http://xieranmaya.github.io/images/cats/' + cururl;
+    picNode.style.width = 400 + 'px'
+    picNode.style.backgroundColor = 'pink'
+    picNode.style.border = '1px solid'
+    if (idx % 3 == 0) {
+      firstul.appendChild(picNode)
+    } else if (idx % 3 === 1) {
+      secondul.appendChild(picNode)
+    } else {
+      thirdul.appendChild(picNode)
+    }
+  }
+</script>
+
+</html>
