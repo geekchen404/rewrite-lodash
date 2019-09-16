@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+
+<body>
+  <div>
+    <button>1</button>
+    <button>2</button>
+    <button>3</button>
+    <p>222</p>
+    <button>4</button>
+    <button>5</button>
+    <button>6</button>
+    <button>7</button>
+    <button>8</button>
+    <button>9</button>
+    <button>10</button>
+  </div>
+  <script>
+    // var buttons = document.querySelectorAll('button')
+    // console.log(buttons)
+    // for (let i = 1; i <= buttons.length; i++) {
+    //   buttons[i - 1].addEventListener('click', () => {
+    //     console.log(i)
+    //   })
+    // }
+
+
+    let divs = document.querySelector('div')
+    divs.addEventListener('click', (e) => {
+      // if (e.target.matches('div button')) {
+      if (e.target.nodeName == 'BUTTON') {
+        console.log(e.target.textContent)
+      }
+    })
+
+  </script>
+</body>
+
+</html>
