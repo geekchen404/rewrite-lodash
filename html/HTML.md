@@ -93,3 +93,12 @@
 
   ## 现在决定标签的嵌套合法性的东西不再是行内块级标签，而是对于每个标签都有专门的分类
    可以在mdn上查找
+
+  ## process标签
+    这个可以实现进度条的效果
+    http://www.zhangxinxu.com/wordpress/2013/02/html5-progress-element-style-control/
+    这篇文章可以看一下
+
+  ## 需要增加map和img的应用
+
+

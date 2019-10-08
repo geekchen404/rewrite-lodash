@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    /* div p {
+      display: none;
+    }
+
+    .hoverme:hover+div p {
+      display: block;
+    } */
+
+    /* body {
+      text-align: left
+    }
+
+    .one {
+      height: 60px;
+      width: 100px;
+      float: right;
+      background-color: rgba(235, 37, 192, 0.3);
+    }
+
+    .two {
+      width: 100%;
+      height: 50px;
+   
+    background-color: rgba(122, 122, 122, 0.3);
+    }
+
+    .three {
+      width: 100px;
+      height: 50px;
+      float: right;
+      background-color: rgba(133, 71, 1, 0.3);
+    }
+
+    .ceshi-span {
+      height: 40px;
+      width: 200px;
+      background-color: rgba(133, 71, 1, 1);
+      border: 1px solid blue;
+      box-shadow: 0 0 5px red;
+      float: left;
+    }
+
+    .ceshi-div {
+      background-color: rgba(22, 218, 120, 1);
+    }
+
+    .ceshi-last {
+      display: inline;
+      background-color: rgb(5, 55, 148, 0.4);
+    }
+    */
+
+    /* ul {
+      width: 100px;
+      background-color: pink;
+      list-style-type: none;
+      text-align: center;
+    }
+
+    li {
+      width: 30px;
+      height: 30px;
+      float: left;
+      background-color: crimson;
+      border: 1px solid white;
+    }
+
+    li:first-child:nth-last-child(2),
+    li:first-child:nth-last-child(2)~li,
+    li:first-child:nth-last-child(4),
+    li:first-child:nth-last-child(4)~li {
+      width: 45px;
+      height: 45px;
+    }
+
+    li:first-child:nth-last-child(1) {
+      width: 70px;
+      height: 70px;
+    } */
+    .bfc {
+      width: 400px;
+      background-color: purple;
+      /* overflow: hidden; */
+    }
+
+    .one,
+    .two,
+    .three {
+      margin: 50px;
+      width: 100px;
+      height: 100px;
+      padding: 10px;
+      background-color: brown;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- <p class="hoverme">鼠标放上来试试看</p>
+  <div>
+    <p>当你hover的时候我才显示出来</p>
+  </div> -->
+
+  <!-- <div class="ceshi">
+    <div class="one">1</div>
+    <div class="two">2</div>
+    <div class="three">3</div>
+  </div> -->
+  <!-- 
+  <div class="ceshi2">
+    <span>111</span>
+    <span class="ceshi-span">
+      222
+      <div class="ceshi-div">
+        333
+      </div>
+      444
+    </span>
+    <div class="ceshi-last">555</div>
+  </div> -->
+  <!-- 
+  <ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+    <li>7</li>
+    <li>8</li>
+    <li>9</li>
+  </ul> -->
+
+  <div class="bfc">
+    <div class="one"></div>
+    <!-- <div class="two"></div>
+    <div class="three"></div> -->
+  </div>
+  <div class="bfc">
+    <!-- <div class="one"></div> -->
+    <div class="two"></div>
+    <div class="three"></div>
+  </div>
+  <!-- <div style="height: 100px;width: 100px;float: left;background: lightblue">我是一个左浮动的元素</div>
+  <div style="width: 200px; height: 200px;background: #eee;;overflow: hidden;">我是一个没有设置浮动,
+    也没有触发 BFC 元素, width: 200px; height:200px; background: #eee;</div> -->
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .fire {
+      width: 20px;
+      height: 20px;
+      position: fixed;
+      background-color: pink;
+    }
+  </style>
+</head>
+
+<body>
+
+  <span class="fire"></span>
+
+  <script>
+
+    let cx = 220;
+    let cy = 220;
+    let fire = document.querySelector('.fire')
+    window.addEventListener('mousemove', e => {
+      cx = e.clientX;
+      cy = e.clientY;
+    })
+    requestAnimationFrame(function ani(time) {
+      let ang = time * 0.005;
+      let x = Math.sin(ang) * 100;
+      let y = Math.cos(ang) * 100;
+      fire.style.top = cy + y + 'px'
+      fire.style.left = cx + x + 'px'
+      requestAnimationFrame(ani)
+    })
+  </script>
+</body>
+
+</html>
