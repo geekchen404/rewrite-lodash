@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src="vue.js"></script>
+  <style>
+    #todo-app {
+      width: 500px;
+      min-height: 300px;
+      margin: 0 auto;
+      margin-top: 50px;
+      background-color: pink;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    ul {
+      list-style-type: none;
+      margin: 0 auto;
+      padding: none;
+    }
+
+    input {
+      line-height: 26px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="todo-app">
+    <h1>TODO LIST</h1>
+    <input type="checkbox" @click="doneAll($event)" :checked="isAllSelect" />
+    <input type="text" placeholder="请输入" @keyup.enter="saveMsg($event)">
+    <ul>
+      <li v-for="(todo,index) in getTodods" :key="index" @dblclick="changeContent($event,index)"
+        style="margin-top: 10px;">
+        <input type="checkbox" :checked="todo.done" @click="checkCur(index)" />
+        <input type="text" :style="{textDecoration:todo.done?'line-through':'none'}" placeholder="请输入"
+          :value="todo.content" @blur="changeContent($event,index)" :disabled="isdisabled">
+        <button v-on:click="deleteCur(index)">删除</button>
+      </li>
+    </ul>
+    <div style="margin:20px 0;">
+      <span>剩余未完成:{{countUnDone}} </span>
+      <button :style="{ backgroundColor:isSelect=='all'?'red':'gray' }" @click="isSelect='all'">全部</button>
+      <button :style="{ backgroundColor:isSelect=='undone'?'red':'gray' }" @click="isSelect='undone'">未完成</button>
+      <button :style="{ backgroundColor:isSelect=='done'?'red':'gray' }" @click="isSelect='done'">已完成</button>
+      <button :style="{ display:countUnDone == todos.length?'none':'inline-block'} " @click="clearDone">清除已完成</button>
+    </div>
+  </div>
+
+  <script>
+    var app = new Vue({
+      el: '#todo-app',
+      data: {
+        isSelect: 'all',
+        isdisabled: true,
+        todos: [],
+      },
+      mounted() {
+        window.onbeforeunload = () => {
+          localStorage.setItem('todoListVue', JSON.stringify(app.$data))
+        }
+        let datas = JSON.parse(localStorage.getItem('todoListVue'))
+        this.isSelect = datas.isSelect
+        this.isdisabled = datas.isdisabled
+        this.todos = datas.todos
+      },
+      computed: {
+        getTodods() {
+          if (this.isSelect == 'all') {
+            return this.todos
+          } else if (this.isSelect == 'undone') {
+            return this.todos.filter(it => !it.done)
+          } else if (this.isSelect == 'done') {
+            return this.todos.filter(it => it.done)
+          }
+        },
+        countUnDone() {
+          return this.todos.filter(it => {
+            return it.done == false
+          }).length;
+        },
+        isAllSelect() {
+          let length = this.todos.filter(it => it.done).length
+          if (length == 0 || length != this.todos.length) {
+            return false
+          } else if (length == this.todos.length) {
+            return true
+          }
+        }
+      },
+      methods: {
+        changeContent(e, index) {
+          if (e.target.type == 'text') {
+            let value = e.target.value;
+            e.target.disabled = !e.target.disabled;
+            this.todos[index].content = value;
+          }
+        },
+        saveMsg(e) {
+          if (e.target.value !== '') {
+            this.todos.push({
+              content: e.target.value,
+              done: false,
+            })
+            e.target.value = ''
+          }
+        },
+        deleteCur(index) {
+          this.todos.splice(index, 1)
+        },
+        doneAll(e) {
+          let done = e.target.checked
+          this.todos.forEach(it => {
+            it.done = done
+          })
+        },
+        checkCur(index) {
+          this.todos[index].done = !this.todos[index].done
+        },
+        clearDone() {
+          this.todos = this.todos.filter(it => !it.done)
+        },
+      },
+    })
+
+
+  </script>
+</body>
+
+</html>

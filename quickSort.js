@@ -19,8 +19,6 @@ function helper(list) {
     .concat([pivot])
     .concat(helper(bigger));
 }
-
-
 function quickSort(list) {
   return helper(list);
 }

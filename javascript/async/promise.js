@@ -1,6 +1,6 @@
 
 /**
- * state: 1:pedding，2：resolve，3：jeject
+ * state: 1:padding，2：resolve，3：jeject
  * @param {function} f 接受成功失败的定义函数 
  */
 function promise(executor) {
@@ -22,7 +22,8 @@ function promise(executor) {
 
 
 var arys = [1, 2, 3, 4, 44, 6]
-var getArys = new Promise((resolve, reject) => {
+var getArys = new Promise(fn)
+var fn = (resolve, reject) => {
   var isAllTrue = true
   arys.forEach((it, idx) => {
     if (idx + 1 !== it) {
@@ -33,8 +34,7 @@ var getArys = new Promise((resolve, reject) => {
   if (isAllTrue) {
     resolve(isAllTrue)
   }
-})
-
+}
 
 var getAry2 = getArys.then(val => {
   console.log(`${val}为true表示该数组全部符合标准`)

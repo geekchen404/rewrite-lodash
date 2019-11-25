@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="vue.js"></script>
+  <title>关于vue的key和diff对比</title>
+</head>
+
+<body>
+  <div id="list1">
+    <div v-for="(item,index) of lists" :key="index">
+      <input type="text">
+      <button @click="del(index)">{{index+1}}</button>
+    </div>
+  </div>
+  <hr>
+  <div id="list2">
+    <div v-for="(item,index) of lists" :key="index">
+      <input type="text" :value="item">
+      <button @click="del(index)">{{index+1}}</button>
+    </div>
+  </div>
+  <hr>
+  <div id="list3">
+    <div v-for="(item,index) of lists" :key="item">
+      <input type="text">
+      <button @click="del(index)">{{item}}</button>
+    </div>
+  </div>
+  <script>
+    var list1 = new Vue({
+      el: '#list1',
+      data: {
+        lists: [1, 2, 3, 4]
+      },
+      methods: {
+        del(id) {
+          this.lists.splice(id, 1)
+        }
+      }
+    })
+    var list2 = new Vue({
+      el: '#list2',
+      data: {
+        lists: [1, 2, 3, 4]
+      },
+      methods: {
+        del(id) {
+          this.lists.splice(id, 1)
+        }
+      }
+    })
+    var list3 = new Vue({
+      el: '#list3',
+      data: {
+        lists: [1, 2, 3, 4]
+      },
+      methods: {
+        del(id) {
+          this.lists.splice(id, 1)
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

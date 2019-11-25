@@ -130,6 +130,26 @@ Promise.all = function (ary) {
 }
 
 
+promise.all = (ary) => {
+  let newAry = []//一个数组
+  let count = 0;//用变量存储
+  return new Promise((res, rej) => {
+    for (let i in newAry) {
+      count++
+      Promise.resolve(val[i]).then(val => {
+        newAry[i] = val
+        if (count == ary.length) {
+          res(newwAry)
+        }
+      }, reason => {
+        rej(reason)
+      })
+    }
+    return newAry
+  })
+}
+
+
 // race就是比赛的意思，表示这个race表示的是第一个有返回值的promise，
 // 先返回完成就是完成，先返回错误就是错误，
 // 写这个函数需要理解，状态一旦确定就无法改变
